@@ -1,7 +1,10 @@
 import React from "react";
+import Sidebar from "./assets/components/Sidebar/Sidebar";
 
-type Props = {};
-
-export default function App({}: Props) {
-  return <div>App</div>;
+export default function App() {
+  return (
+    <div className="app">
+      <Sidebar />
+    </div>
+  );
 }
