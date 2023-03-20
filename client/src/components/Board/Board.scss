@@ -1,0 +1,39 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  
+  
+  flex-grow: 1;
+  padding: 24px;
+  gap: 50px;
+
+  &-column {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    &-header {
+      display: flex;
+      align-items: center;
+
+      gap:10px;
+
+      &-icon {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        
+        &.todo { background-color: #49c4e5;}
+        &.doing { background-color: #8471f2;}
+        &.done { background-color: #67e2ae;}
+      }
+      
+      &-label {
+        font-weight: 700;
+        font-size: 12px;
+        letter-spacing: 1.8px;
+      }
+    }
+  }
+}
