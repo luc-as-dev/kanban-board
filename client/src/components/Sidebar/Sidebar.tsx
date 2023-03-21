@@ -1,23 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { Square, PlusSquare } from "react-feather";
+import { useBoardsContext } from "../../context/BoardsContext";
 import "./Sidebar.scss";
 
 type Props = {};
 
 export default function Sidebar({}: Props) {
+  const { projects, createProject, currentProject, changeBoard } =
+    useBoardsContext();
+  const [showCreateProject, setShowCreateProject] = useState<boolean>(false);
+  const [projectName, setProjectName] = useState<string>("");
+
   return (
     <div className="sidebar">
-      <p>ALL BOARDS ( 2 )</p>
+      <p>ALL BOARDS ( {projects.length} )</p>
       <ul className="sidebar-items">
-        <li className="active">
-          <Square />
-          Place Board
-        </li>
-        <li>
-          <Square />
-          Place Board
-        </li>
-        <li>
+        {projects.map((project, index) => (
+          <li
+            className={project.name === currentProject.name ? "active" : ""}
+            key={index}
+            onClick={() => changeBoard(index)}
+          >
+            <Square />
+            {project.name}
+          </li>
+        ))}
+        <li onClick={() => setShowCreateProject(!showCreateProject)}>
           <PlusSquare />
           Create new board
         </li>
