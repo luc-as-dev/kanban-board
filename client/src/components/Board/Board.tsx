@@ -1,8 +1,12 @@
 import React from "react";
+import useBoards from "../../hooks/useBoards";
 import Ticket from "../Ticket/Ticket";
 import "./Board.scss";
 
 export default function Board() {
+  const boards = useBoards();
+  console.log(boards);
+
   return (
     <div className="board">
       <div className="board-column">
