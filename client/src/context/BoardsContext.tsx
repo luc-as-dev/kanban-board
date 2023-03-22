@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext, useState } from "react";
+import { useLocalStorage } from "usehooks-ts";
 import { IProject, projectsData } from "./projects-data";
 
 interface Context {
@@ -24,7 +25,10 @@ type Props = {
 };
 
 export default function BoardsContextProvider({ children }: Props) {
-  const [projects, setProjects] = useState<IProject[]>(projectsData);
+  const [projects, setProjects] = useLocalStorage<IProject[]>(
+    "project-data",
+    projectsData
+  );
   const [selectedIndex, setSelectedIndex] = useState(0);
   const currentProject = projects[selectedIndex];
 
