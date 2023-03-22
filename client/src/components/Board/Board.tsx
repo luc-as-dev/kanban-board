@@ -10,7 +10,9 @@ export default function Board() {
       {currentProject.board.map((list) => (
         <div className="board-column">
           <div className="board-column-header">
-            <div className="board-column-header-icon todo"></div>
+            <div
+              className={`board-column-header-icon ${list.name.toLowerCase()}`}
+            ></div>
             <h4 className="board-column-header-label">{list.name}</h4>
           </div>
           {list.tickets.map((ticket) => (
