@@ -27,8 +27,31 @@
 body {
   background-color:  var(--bg-dark-gray);
   color: var(--text);
+  
 }
 
 .app {
   display: flex;
+  flex-direction: column;
+  
+  min-height: 100vh;
+}
+
+.main-container {
+  flex-grow: 1;
+  display: flex;
+}
+
+.btn {
+  background-color: var(--primary);
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+
+  transition: opacity 100ms ease-in-out;;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
 }
