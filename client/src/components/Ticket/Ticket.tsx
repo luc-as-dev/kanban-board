@@ -11,7 +11,7 @@ export default function Ticket({ ticket }: Props) {
     <div className="ticket">
       <h3>{ticket.title}</h3>
       <p>{ticket.description}</p>
-      <p>{ticket.tasks.length} Subtasks</p>
+      <p>{ticket.subtasks.length} Subtasks</p>
     </div>
   );
 }

@@ -7,6 +7,11 @@ interface Context {
   currentProject: IProject;
   createProject: (name: string) => void;
   changeBoard: (index: number) => void;
+  createTicket: (
+    title: string,
+    description: string,
+    subtasks: string[]
+  ) => void;
 }
 
 export const boardsContext = createContext<Context>({
@@ -14,6 +19,7 @@ export const boardsContext = createContext<Context>({
   currentProject: {} as IProject,
   createProject: () => {},
   changeBoard: () => {},
+  createTicket: () => {},
 });
 
 export function useBoardsContext() {
@@ -51,9 +57,28 @@ export default function BoardsContextProvider({ children }: Props) {
     setSelectedIndex(index);
   }
 
+  function createTicket(
+    title: string,
+    description: string,
+    subtasks: string[]
+  ) {
+    projects[selectedIndex].board[0].tickets.push({
+      id: Math.random().toString(),
+      title,
+      description,
+      subtasks,
+    });
+  }
+
   return (
     <boardsContext.Provider
-      value={{ projects, currentProject, createProject, changeBoard }}
+      value={{
+        projects,
+        currentProject,
+        createProject,
+        changeBoard,
+        createTicket,
+      }}
     >
       {children}
     </boardsContext.Provider>
