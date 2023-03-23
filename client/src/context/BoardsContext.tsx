@@ -10,6 +10,7 @@ interface Context {
   createTicket: (
     title: string,
     description: string,
+    status: number,
     subtasks: string[]
   ) => void;
 }
@@ -60,9 +61,10 @@ export default function BoardsContextProvider({ children }: Props) {
   function createTicket(
     title: string,
     description: string,
+    status: number,
     subtasks: string[]
   ) {
-    projects[selectedIndex].board[0].tickets.push({
+    projects[selectedIndex].board[status].tickets.push({
       id: Math.random().toString(),
       title,
       description,
