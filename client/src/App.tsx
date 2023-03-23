@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Board from "./components/Board/Board";
-import { CreateTaskModal } from "./components/CreateTaksModal/CreateTaskModal";
+import { CreateTicketModal } from "./components/CreateTicketModal/CreateTicketModal";
 import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
 
 export default function App() {
+  const [showCreateTicket, setShowCreateTicket] = useState(false);
+
+  function toggleShowCreateTicket() {
+    setShowCreateTicket(!showCreateTicket);
+  }
+
   return (
     <div className="app">
-      <Navbar />
+      <Navbar toggleShowCreateTicket={toggleShowCreateTicket} />
       <div className="main-container">
         <Sidebar />
         <Board />
       </div>
-      <CreateTaskModal />
+      {showCreateTicket && (
+        <CreateTicketModal toggleShowCreateTicket={toggleShowCreateTicket} />
+      )}
     </div>
   );
 }
