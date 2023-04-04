@@ -57,10 +57,12 @@
       }
     }  
   }
+  
   form {
     margin-top: 3px;
     padding: 0 25px;
   }
+
   input {
     display: block;
     background-color: var(--bg-lines);
@@ -82,5 +84,9 @@
     width: 100%;
     padding: 6px 5px;
     border-radius: 5px;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: none;
   }
 }
