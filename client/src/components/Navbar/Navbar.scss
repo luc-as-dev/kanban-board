@@ -24,9 +24,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    &-project {
+      display: flex;
+      align-items: center;
+      gap: 6px;
 
-    h4 {
-      font-size: 24px;
+      h4 {
+        font-size: 24px;
+      }
+
+      svg {
+        display: none;
+
+        @media screen and (max-width: 800px) {
+          display: initial;
+        }
+      }
     }
 
     button {
