@@ -92,7 +92,11 @@ export const CreateTicketModal = ({ toggleShowCreateTicket }: Props) => {
 
       <div className="create-ticket-modal-divider"></div>
 
-      <button className="btn" onClick={createTicketHandler}>
+      <button
+        className="btn"
+        onClick={createTicketHandler}
+        disabled={!title.trim() || !description.trim()}
+      >
         Create Ticket
       </button>
     </Modal>

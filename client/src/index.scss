@@ -54,4 +54,8 @@ body {
     opacity: 0.9;
   }
 
+  &:disabled {
+    cursor: auto;
+    opacity: 0.5;
+  }
 }
