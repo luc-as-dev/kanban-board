@@ -11,6 +11,15 @@ export default function Sidebar({}: Props) {
   const [showCreateProject, setShowCreateProject] = useState<boolean>(false);
   const [projectName, setProjectName] = useState<string>("");
 
+  function newBoardSubmitHandler(e: any) {
+    e.preventDefault();
+    if (projectName.trim().length > 0) {
+      createProject(projectName.trim());
+      setProjectName("");
+      setShowCreateProject(false);
+    }
+  }
+
   return (
     <div className="sidebar">
       <p>ALL BOARDS ( {projects.length} )</p>
@@ -30,6 +39,15 @@ export default function Sidebar({}: Props) {
           Create new board
         </li>
       </ul>
+      {showCreateProject && (
+        <form action="" onSubmit={newBoardSubmitHandler}>
+          <input
+            type="text"
+            value={projectName}
+            onChange={(e) => setProjectName(e.target.value)}
+          />
+        </form>
+      )}
     </div>
   );
 }
