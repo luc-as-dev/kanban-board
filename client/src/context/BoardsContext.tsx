@@ -13,6 +13,7 @@ interface Context {
     status: number,
     subtasks: string[]
   ) => void;
+  changeCurrentProjectBoard: (board: IProject["board"]) => void;
 }
 
 export const boardsContext = createContext<Context>({
@@ -21,6 +22,7 @@ export const boardsContext = createContext<Context>({
   createProject: () => {},
   changeBoard: () => {},
   createTicket: () => {},
+  changeCurrentProjectBoard: (board: IProject["board"]) => {},
 });
 
 export function useBoardsContext() {
@@ -58,6 +60,13 @@ export default function BoardsContextProvider({ children }: Props) {
     setSelectedIndex(index);
   }
 
+  function changeCurrentProjectBoard(board: IProject["board"]) {
+    const newProjects = [...projects];
+    newProjects[selectedIndex].board = board;
+
+    setProjects(newProjects);
+  }
+
   function createTicket(
     title: string,
     description: string,
@@ -80,6 +89,7 @@ export default function BoardsContextProvider({ children }: Props) {
         createProject,
         changeBoard,
         createTicket,
+        changeCurrentProjectBoard,
       }}
     >
       {children}

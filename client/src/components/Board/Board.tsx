@@ -1,11 +1,10 @@
-import React from "react";
+import "./Board.scss";
 import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 import { useBoardsContext } from "../../context/BoardsContext";
 import Ticket from "../Ticket/Ticket";
-import "./Board.scss";
 
 export default function Board() {
-  const { currentProject } = useBoardsContext();
+  const { currentProject, changeCurrentProjectBoard } = useBoardsContext();
 
   function onDragEnd(result: DropResult) {
     if (!result.destination) return;
@@ -22,6 +21,7 @@ export default function Board() {
     const [removedTicket] = board[sourceIndex].tickets.splice(source.index, 1);
 
     board[destinationIndex].tickets.splice(destination.index, 0, removedTicket);
+    changeCurrentProjectBoard(board);
   }
 
   return (
