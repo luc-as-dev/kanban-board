@@ -28,34 +28,33 @@ export default function Board() {
     <div className="board">
       <DragDropContext onDragEnd={onDragEnd}>
         {currentProject.board.map((list) => (
-          <div key={list.name}>
-            <Droppable droppableId={list.name}>
-              {(provided, snapshot) => (
-                <div
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                  key={list.name}
-                  className="board-column"
-                >
-                  <div className="board-column-header">
-                    <div
-                      className={`board-column-header-icon ${list.name.toLowerCase()}`}
-                    ></div>
-                    <h4 className="board-column-header-label">{list.name}</h4>
-                  </div>
-                  {list.tickets.length > 0 ? (
-                    list.tickets.map((ticket, index) => (
-                      <Ticket ticket={ticket} index={index} />
-                    ))
-                  ) : (
-                    <div className="board-column-placeholder">
-                      <p>Add ticket to the list by dropping it here</p>
-                    </div>
-                  )}
+          <Droppable key={list.name} droppableId={list.name}>
+            {(provided, snapshot) => (
+              <div
+                className="board-column"
+                ref={provided.innerRef}
+                key={list.name}
+                {...provided.droppableProps}
+              >
+                <div className="board-column-header">
+                  <div
+                    className={`board-column-header-icon ${list.name.toLowerCase()}`}
+                  ></div>
+                  <h4 className="board-column-header-label">{list.name}</h4>
                 </div>
-              )}
-            </Droppable>
-          </div>
+                {list.tickets.length > 0 ? (
+                  list.tickets.map((ticket, index) => (
+                    <Ticket key={ticket.id} ticket={ticket} index={index} />
+                  ))
+                ) : (
+                  <div className="board-column-placeholder">
+                    <p>Add ticket to the list by dropping it here</p>
+                  </div>
+                )}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
         ))}
       </DragDropContext>
     </div>
