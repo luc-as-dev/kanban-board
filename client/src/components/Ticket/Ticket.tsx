@@ -14,21 +14,19 @@ type Props = {
 
 export default function Ticket({ ticket, index }: Props) {
   return (
-    <>
-      <Draggable key={ticket.id} draggableId={ticket.id} index={index}>
-        {(provided, snapshot) => (
-          <div
-            className="ticket"
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-          >
-            <h3>{ticket.title}</h3>
-            <p>{ticket.description}</p>
-            <p>{ticket.subtasks.length} Subtasks</p>
-          </div>
-        )}
-      </Draggable>
-    </>
+    <Draggable key={ticket.id} draggableId={ticket.id} index={index}>
+      {(provided, snapshot) => (
+        <div
+          className="ticket"
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <h3>{ticket.title}</h3>
+          <p>{ticket.description}</p>
+          <p>{ticket.subtasks.length} Subtasks</p>
+        </div>
+      )}
+    </Draggable>
   );
 }
