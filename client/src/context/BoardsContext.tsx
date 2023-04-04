@@ -38,7 +38,10 @@ export default function BoardsContextProvider({ children }: Props) {
     "project-data",
     projectsData
   );
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useLocalStorage<number>(
+    "selected-index",
+    0
+  );
   const currentProject = projects[selectedIndex];
 
   function createProject(name: string) {
