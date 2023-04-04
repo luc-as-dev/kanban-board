@@ -1,0 +1,40 @@
+.modal {
+  position: fixed;;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #11111188;
+
+  width: 100vw;
+  height: 100vh;
+
+  &-card {
+    position: relative;
+
+    background-color: var(--bg-gray);
+
+    max-width: 400px;
+    width: 100%;
+    max-height: 90vh;
+    padding: 20px;
+    margin: 20px;
+    gap: 5px;
+    border-radius: 10px;
+
+    &-close {
+      position: absolute;
+      cursor: pointer;
+
+      transition: all 0.1s ease-in-out;
+      color: var(--text-gray);
+
+      top: 10px;
+      right: 10px;
+      
+      &:hover {
+      opacity: 0.7;
+      }
+    }
+  }
+}
